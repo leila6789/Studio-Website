@@ -184,3 +184,11 @@
 html {
   font-size: var(--font-size);
 }
+
+@layer utilities {
+  .orbitron-nav {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 20px;
+    font-weight: 400; /* Regular */
+  }
+}
