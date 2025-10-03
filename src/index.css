@@ -1,4 +1,5 @@
 /*! tailwindcss v4.1.3 | MIT License | https://tailwindcss.com */
+
 @layer properties {
   @supports (((-webkit-hyphens: none)) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color: rgb(from red r g b)))) {
     *, :before, :after, ::backdrop {
@@ -1431,6 +1432,21 @@
     font-size: 16px;
     font-weight: 400; /* Regular */
   }
+
+@layer utilities {
+  .russo-h1 {
+    font-family: 'Russo One', sans-serif;
+    font-size: 56px;
+    font-weight: 400;
+  }
+
+  .exo-p {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+  }
+}
+
 
   @layer utilities {
     .header-angled {

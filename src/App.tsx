@@ -7,7 +7,6 @@ import { Footer } from "./components/Footer";
 export default function App() {
   return (
     <div className="min-h-screen bg-gray-900 pt-24">
-      <Header />
       <HeroSection />
       <AdventureSection />
       <NewsletterSection />

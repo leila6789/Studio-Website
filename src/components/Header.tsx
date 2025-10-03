@@ -2,7 +2,7 @@ import { Button } from "./ui/button";
 
 export function Header() {
   return (
-    <header className="w-full bg-black/80 backdrop-blur-sm border-b header-angled relative z-50">
+    <header className="fixed top-0 z-50 w-full bg-white/80 backdrop-blur-sm border-b header-angled">
       <div className="max-w-7xl mx-auto px-6 py-3">
         <nav className="flex items-center justify-between w-full">
           {/* Left Nav */}
