@@ -1762,3 +1762,20 @@ html {
     transform: none;
   }
 }
+
+
+@keyframes glowPulse {
+  0% {
+    text-shadow: 0 0 12px rgba(45, 212, 191, 1.2), 0 0 20px rgba(45, 212, 191, 0.8);
+  }
+  50% {
+    text-shadow: 0 0 24px rgba(45, 212, 191, 1.8), 0 0 48px rgba(45, 212, 191, 1.2);
+  }
+  100% {
+    text-shadow: 0 0 12px rgba(45, 212, 191, 1.2), 0 0 20px rgba(45, 212, 191, 0.8);
+  }
+}
+
+.glow-active {
+  animation: glowPulse 3s ease-in-out infinite;
+}

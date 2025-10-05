@@ -1,4 +1,4 @@
-import { Button } from "./ui/button";
+import GlitchButton from "./ui/glitch-button";
 import { Header } from "./Header";
 
 export function HeroSection() {
@@ -25,15 +25,15 @@ export function HeroSection() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button className="exo-p bg-teal-400 hover:bg-teal-500 text-black px-8 py-3 rounded-lg text-lg">
-                Start Your Journey
-              </Button>
-              <Button
-                variant="outline"
-                className="exo-p border-white text-black hover:text-black px-8 py-3 rounded-lg text-lg"
-              >
-                Join Our Discord
-              </Button>
+
+            <GlitchButton variant="primary" onClick={() => console.log("Primary clicked")}>
+              Start Your Journey
+            </GlitchButton>
+
+            <GlitchButton variant="secondary" onClick={() => console.log("Secondary clicked")}>
+              Join Our Discord
+            </GlitchButton>
+
             </div>
           </div>
         </div>

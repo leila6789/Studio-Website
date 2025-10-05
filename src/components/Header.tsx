@@ -7,7 +7,7 @@ export function Header() {
         <nav className="flex items-center justify-between w-full">
           {/* Left Nav */}
           <div className="hidden md:flex items-center gap-20">
-            <a href="#" className="orbitron-nav text-teal-400 hover:text-teal-300 transition-colors">Home</a>
+            <a href="#" className="orbitron-nav text-teal-400 hover:text-teal-300 transition-colors glow-active">Home</a>
             <a href="#" className="orbitron-nav text-gray-300 hover:text-white transition-colors">Games</a>
             <a href="#" className="orbitron-nav text-gray-300 hover:text-white transition-colors">About</a>
           </div>
