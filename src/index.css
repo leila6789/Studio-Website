@@ -1433,6 +1433,27 @@
     font-weight: 400; /* Regular */
   }
 
+@font-face {
+  font-family: "Aspekta";
+  src: url("/fonts/Aspekta-VF.woff2") format("woff2-variations"),
+       url("/fonts/Aspekta-VF.woff") format("woff-variations"),
+       url("/fonts/Aspekta-Regular.woff2") format("woff2"),
+       url("/fonts/Aspekta-Regular.woff") format("woff");
+  font-weight: 100 900; /* for variable font range */
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer utilities {
+  .aspekta-h1 {
+    font-family: 'Aspekta', sans-serif;
+    font-size: 56px;
+    /* For variable font, you might do: font-weight: 400; or let it vary */
+    font-weight: 800;
+  }
+}
+
+
 @layer utilities {
   .russo-h1 {
     font-family: 'Russo One', sans-serif;
@@ -1778,4 +1799,134 @@ html {
 
 .glow-active {
   animation: glowPulse 3s ease-in-out infinite;
+}
+
+
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up {
+  animation: fadeUp 1.2s ease-out forwards;
+}
+
+@keyframes pixelDissolve {
+  0% {
+    filter: opacity(1) blur(0px);
+    clip-path: inset(0 0 0 0);
+  }
+  50% {
+    filter: opacity(0.5) blur(1px);
+    clip-path: inset(10% 10% 10% 10%);
+  }
+  100% {
+    filter: opacity(0) blur(3px);
+    clip-path: inset(50% 50% 50% 50%);
+  }
+}
+
+@keyframes pixelAssemble {
+  0% {
+    filter: opacity(0) blur(3px);
+    clip-path: inset(50% 50% 50% 50%);
+  }
+  50% {
+    filter: opacity(0.5) blur(1px);
+    clip-path: inset(10% 10% 10% 10%);
+  }
+  100% {
+    filter: opacity(1) blur(0px);
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.pixel-dissolve {
+  animation: pixelDissolve 1.5s forwards;
+  filter: opacity(0) contrast(200%) brightness(130%) saturate(0.8)
+    drop-shadow(0 0 6px rgba(45, 212, 191, 0.6));
+  transform: scale(1.05);
+}
+
+.pixel-assemble {
+  animation: pixelAssemble 1.5s forwards;
+  filter: opacity(1) contrast(100%) brightness(100%);
+}
+
+canvas {
+  mix-blend-mode: lighten;
+  filter: drop-shadow(0 0 6px rgba(45, 212, 191, 0.6));
+}
+
+.dissolve-text {
+  display: inline-block;
+  position: relative;
+  transition: transform 0.2s linear, opacity 0.2s linear;
+}
+
+.dissolve-text::before,
+.dissolve-text::after {
+  content: attr(data-text);
+}
+
+.dissolve-text {
+  transform: translateY(calc(var(--progress) * -40px))
+    scale(calc(1 - var(--progress) * 0.05))
+    rotate(calc(var(--progress) * 2deg));
+  opacity: calc(1 - var(--progress) * 1);
+  filter: blur(calc(var(--progress) * 4px));
+}
+
+.dissolve-buttons {
+  transform: translateY(calc(var(--progress) * 60px))
+    scale(calc(1 - var(--progress) * 0.05));
+  opacity: calc(1 - var(--progress));
+  transition: transform 0.3s linear, opacity 0.3s linear;
+}
+
+/* Optional spark-like breakup particles */
+@keyframes fragment {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--x, 0), var(--y, 0)) scale(0.2);
+    opacity: 0;
+  }
+}
+
+.dissolve-group {
+  transition: transform 0.1s linear, opacity 0.1s linear, filter 0.1s linear;
+  transform-origin: center;
+  will-change: transform, opacity, filter;
+}
+
+/* Smooth scroll-mapped animation */
+.dissolve-group {
+  transform:
+    translateY(calc(var(--progress) * -80px))
+    rotate(calc(var(--progress) * 2deg))
+    scale(calc(1 - var(--progress) * 0.05));
+  opacity: calc(1 - var(--progress) * 1.2);
+  filter: blur(calc(var(--progress) * 4px)) brightness(calc(1 - var(--progress) * 0.4));
+}
+
+/* Tiny fragment illusion */
+.dissolve-group::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(45,212,191,0.25) 0%, transparent 70%);
+  opacity: calc(var(--progress) * 0.8);
+  pointer-events: none;
+  mix-blend-mode: screen;
+  animation: sparkMove 8s linear infinite;
+}
+
+/* Floating spark motion for a subtle "breaking apart" illusion */
+@keyframes sparkMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }

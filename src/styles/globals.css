@@ -206,3 +206,23 @@ html {
     font-weight: 400;
   }
 }
+
+@font-face {
+  font-family: "Aspekta";
+  src: url("/fonts/Aspekta-VF.woff2") format("woff2-variations"),
+       url("/fonts/Aspekta-VF.woff") format("woff-variations"),
+       url("/fonts/Aspekta-Regular.woff2") format("woff2"),
+       url("/fonts/Aspekta-Regular.woff") format("woff");
+  font-weight: 100 900; /* for variable font range */
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer utilities {
+  .aspekta-h1 {
+    font-family: 'Aspekta', sans-serif;
+    font-size: 56px;
+    /* For variable font, you might do: font-weight: 400; or let it vary */
+    font-weight: 400;
+  }
+}

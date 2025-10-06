@@ -1,15 +1,29 @@
+import { useState } from "react";
 import { Button } from "./ui/button";
 
 export function Header() {
+  const [activeLink, setActiveLink] = useState("Home");
+
   return (
     <header className="fixed top-0 z-50 w-full bg-white/80 backdrop-blur-sm border-b header-angled">
       <div className="max-w-7xl mx-auto px-6 py-3">
         <nav className="flex items-center justify-between w-full">
           {/* Left Nav */}
           <div className="hidden md:flex items-center gap-20">
-            <a href="#" className="orbitron-nav text-teal-400 hover:text-teal-300 transition-colors glow-active">Home</a>
-            <a href="#" className="orbitron-nav text-gray-300 hover:text-white transition-colors">Games</a>
-            <a href="#" className="orbitron-nav text-gray-300 hover:text-white transition-colors">About</a>
+            {["Home", "Games", "About"].map((label) => (
+              <a
+                key={label}
+                href="#"
+                onClick={() => setActiveLink(label)}
+                className={`orbitron-nav transition-colors ${
+                  activeLink === label
+                    ? "text-teal-400 glow-active"
+                    : "text-gray-300 hover:text-white"
+                }`}
+              >
+                {label}
+              </a>
+            ))}
           </div>
 
           {/* Logo Centered */}
@@ -23,9 +37,20 @@ export function Header() {
 
           {/* Right Nav */}
           <div className="hidden md:flex items-center gap-20">
-            <a href="#" className="orbitron-nav text-gray-300 hover:text-white transition-colors">News</a>
-            <a href="#" className="orbitron-nav text-gray-300 hover:text-white transition-colors">Careers</a>
-            <a href="#" className="orbitron-nav text-gray-300 hover:text-white transition-colors">Contact</a>
+            {["News", "Careers", "Contact"].map((label) => (
+              <a
+                key={label}
+                href="#"
+                onClick={() => setActiveLink(label)}
+                className={`orbitron-nav transition-colors ${
+                  activeLink === label
+                    ? "text-teal-400 glow-active"
+                    : "text-gray-300 hover:text-white"
+                }`}
+              >
+                {label}
+              </a>
+            ))}
           </div>
 
           {/* Mobile menu button */}
