@@ -44,7 +44,7 @@ const StyledButton = styled.button<{ variant: "primary" | "secondary" }>`
   ${(props) =>
     props.variant === "primary"
       ? css`
-          --primary: #51be9b; /* teal */
+          --primary: #0d9488; /* teal */
           --shadow-primary: #ffffff; /* white glitch */
           --text-color: #ffffff;
           color: var(--text-color);

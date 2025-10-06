@@ -62,7 +62,7 @@ export function HeroSection() {
           and ignite imagination through bold storytelling and innovative design.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4">
+        <div className="exo-p flex flex-col sm:flex-row gap-4">
           <GlitchButton variant="primary">Start Your Journey</GlitchButton>
           <GlitchButton variant="secondary">Join Our Discord</GlitchButton>
         </div>

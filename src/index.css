@@ -1930,3 +1930,13 @@ canvas {
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
+
+.stamp-fade {
+  max-width: 800px;
+  height: auto;
+  mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 85%);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 85%);
+  mix-blend-mode: overlay;
+  filter: contrast(0.5) opacity(0.2);
+}
+
