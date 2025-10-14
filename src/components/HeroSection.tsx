@@ -4,13 +4,14 @@ import { Header } from "./Header";
 
 export function HeroSection() {
   const heroRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       if (!heroRef.current) return;
       const rect = heroRef.current.getBoundingClientRect();
-      const range = 400; // scroll distance for full dissolve
+      const range = 400;
       const offset = Math.min(Math.max(-rect.top / range, 0), 1);
       setProgress(offset);
     };
@@ -22,7 +23,7 @@ export function HeroSection() {
   return (
     <section className="relative z-0 min-h-screen overflow-hidden">
       {/* Background Video */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden -z-10"> {/* 👈 add -z-10 */}
         <video
           className="absolute inset-0 w-full h-full object-cover"
           src="/src/assets/hero-bg-video.mp4"
@@ -34,8 +35,7 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-black/50"></div>
       </div>
 
-      <Header />
-
+     
       {/* Hero Content */}
       <div
         ref={heroRef}
